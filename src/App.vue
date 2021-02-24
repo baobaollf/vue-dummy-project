@@ -1,17 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <Navbar>
+    </Navbar>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Navbar from "./components/Navbar";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Navbar,
+  },
+  created() {
+    if (sessionStorage.getItem('color') === null) {
+      sessionStorage.setItem('color', "dark");
+    }
+    sessionStorage.setItem('state', "false");
+
   }
 }
 </script>
@@ -23,6 +32,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
